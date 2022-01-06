@@ -1,7 +1,7 @@
 class Solution {
 public:
     bool carPooling(vector<vector<int>>& trips, int capacity) {
-      vector<pair<int,int>>p;   //passengers, a/d 
+      vector<pair<int,int>>p;   //a/d , passengers
        for(int i=0;i<trips.size();i++)
        {
            p.push_back({trips[i][1],trips[i][0]});

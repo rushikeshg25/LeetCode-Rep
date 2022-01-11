@@ -18,7 +18,7 @@ class Solution {
 public:
     
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-        if(lists.empty()) return NULL;
+       // if(lists.empty()) return NULL;
         priority_queue<ListNode*,vector<ListNode*>,compare>q;
         for(auto i:lists)
         {

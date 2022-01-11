@@ -25,7 +25,7 @@ public:
             if(i)
             q.push(i);
         }
-        if(q.empty()) return NULL;
+        //if(q.empty()) return NULL;
         ListNode*dummy=new ListNode(-1);
         ListNode*temp=dummy;
         while(!q.empty())

@@ -11,7 +11,7 @@ private:
         string a=pad[cur];
         for(int j=0;j<a.size();j++)
         {
-         subans.push_back(a[j]);
+         subans+=a[j];
          fn(digits,pad,i+1,subans,ans);
          subans.pop_back();
         }

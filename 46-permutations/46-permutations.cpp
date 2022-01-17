@@ -10,6 +10,7 @@ public:
         {
             swap(nums[i],nums[j]);
             solve(nums,ans,i+1,n);
+            swap(nums[j],nums[i]);
         }
             
     }

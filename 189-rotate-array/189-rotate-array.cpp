@@ -2,6 +2,12 @@ class Solution {
 public:
     void rotate(vector<int>& nums, int k) 
     {
-        std::rotate(nums.rbegin(), nums.rbegin() + k%nums.size(), nums.rend());
+       int n=nums.size();
+        vector<int>ans(n);
+       for(int i=0;i<n;i++)
+       {
+         ans[(i+k)%n]=nums[i];
+       }
+       for(int i=0;i<n;i++) nums[i]=ans[i];
     }
 };

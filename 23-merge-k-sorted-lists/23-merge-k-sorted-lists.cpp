@@ -18,14 +18,15 @@ class Solution {
 public:
     
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-       // if(lists.empty()) return NULL;
+       
         priority_queue<ListNode*,vector<ListNode*>,compare>q;
         for(auto i:lists)
         {
             if(i)
             q.push(i);
         }
-        //if(q.empty()) return NULL;
+       
+        int i=0;
         ListNode*dummy=new ListNode(-1);
         ListNode*temp=dummy;
         while(!q.empty())
@@ -33,9 +34,11 @@ public:
             temp->next=q.top();
             q.pop();
             temp=temp->next;
+            i++;
             if(temp->next)
-                q.push(temp->next);
+               q.push(temp->next);
         }
+        cout<<i;
         return dummy->next;
     }
 };

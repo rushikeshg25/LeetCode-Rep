@@ -1,21 +1,24 @@
 class Solution {
 public:
     vector<int> findAnagrams(string s, string p) {
-        int letters[26] = {0};
-        for(char c : p) letters[c - 'a']++;
-        
-        vector<int> result;
-        int remaining = p.size(), j = 0;
-        for(int i = 0; i< s.size(); i++){
-            while(j < s.size() && j - i < p.size()){
-                if(letters[s.at(j++) - 'a']-- > 0)
-                    remaining--;
-            }
-            if(remaining == 0 && j - i == p.size()) 
-                result.push_back(i);
-            if(letters[s.at(i) - 'a']++ >= 0) 
-                remaining++;            
+       int n=s.size();
+       int m=p.size();
+        if(m>n) return {};
+       vector<int>freq(26,0);
+       vector<int>win(26,0);
+       vector<int>ans;
+       for(auto i:p) freq[i-'a']++;
+       int i=0;
+       for(i=0;i<m;i++){
+           win[s[i]-'a']++;
+       }
+        if(win==freq) ans.push_back(0);
+        int j=0;
+        while(i<n){
+            win[s[j++]-'a']--;
+            win[s[i++]-'a']++;
+            if(win==freq) ans.push_back(j);
         }
-        return result;
+        return ans;
     }
 };

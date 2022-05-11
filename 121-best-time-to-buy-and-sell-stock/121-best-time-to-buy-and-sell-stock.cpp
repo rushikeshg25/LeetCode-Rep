@@ -5,7 +5,7 @@ public:
         int ans=INT_MIN;
         for(int i=0;i<prices.size();i++)
         {
-            m=min(m,prices[i]);
+            m=min(prices[i],m);
             ans=max(ans,prices[i]-m);
         }
         return ans;

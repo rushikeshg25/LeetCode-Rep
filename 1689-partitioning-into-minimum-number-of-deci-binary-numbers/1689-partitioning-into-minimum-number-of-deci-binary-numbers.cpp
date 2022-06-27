@@ -1,6 +1,9 @@
 class Solution {
 public:
-    int minPartitions(string a) {
-       return *max_element(a.begin(),a.end())-'0';
+    int minPartitions(string n) {
+        int ans=0;
+        for(auto i:n)
+            ans=max(ans,i-'0');
+        return ans;
     }
 };

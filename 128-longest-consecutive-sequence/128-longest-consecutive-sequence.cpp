@@ -13,7 +13,7 @@ public:
             else if(nums[i]!=nums[i-1])cur=1;
            ans=max(ans,cur); 
         }
-        ans=max(ans,cur);
+        
         return ans;
     }
 };

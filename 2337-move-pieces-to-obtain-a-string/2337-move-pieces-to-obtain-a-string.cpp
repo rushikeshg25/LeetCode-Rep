@@ -6,7 +6,7 @@ public:
         // i start
         // j end
         while(i<=n && j<=n){
-         
+       // cout<<i<<" "<<j<<endl;
         while(i<=n && start[i]=='_')i++;
         while(j<=n && target[j]=='_')j++;
         

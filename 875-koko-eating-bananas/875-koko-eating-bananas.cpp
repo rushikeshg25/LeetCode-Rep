@@ -6,7 +6,7 @@ public:
         int time=0;
         //for(auto i:piles) r=max(r,i);
         while(l<r){
-            int mid=(l+r)/2;
+            int mid=(l+r)>>1;
             time=0;
             for(auto i:piles){
                  time += (i + mid - 1) / mid;

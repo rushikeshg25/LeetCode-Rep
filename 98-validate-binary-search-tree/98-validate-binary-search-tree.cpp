@@ -1,23 +1,12 @@
 class Solution {
 public:
-     void valid(TreeNode* root, TreeNode* &prev, int& flag){
-        
-        if(root==NULL) return;
-        valid(root->left,prev,flag);
-        if( prev!=NULL && root->val <= prev->val)
-        {
-            flag=0;
-            return;
-        }
-        prev=root;
-        valid(root->right,prev,flag);
-    }
     bool isValidBST(TreeNode* root) {
-        int flag=1;
-        TreeNode* prev=NULL;
-        valid(root,prev,flag);
-        return flag;
+        return help(root, LONG_MIN, LONG_MAX);
     }
     
-   
+    bool help(TreeNode* root, long min, long max){
+        if(!root)   return true;
+        if(root->val <= min || root->val >= max)  return false;
+        return help(root->left, min, root->val) && help(root->right, root->val, max);
+    }
 };

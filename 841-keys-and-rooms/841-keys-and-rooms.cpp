@@ -1,21 +1,17 @@
+//DFS by Rushikesh Ghotekar
 class Solution {
 public:
     bool canVisitAllRooms(vector<vector<int>>& rooms) {
-        queue<int>q;
         unordered_set<int>visited;
-        q.push(0);
-        while(!q.empty()){
-            int temp=q.front();
-            q.pop();
-            visited.insert(temp);
-            for(auto i:rooms[temp]){
-                if(visited.find(i)==visited.end()){
-                    
-                    q.push(i);
-                }
-            }
-            
-        }
+        fn(rooms,0,visited);
         return visited.size()==rooms.size();
+    }
+    
+    void fn(vector<vector<int>>rooms,int i,unordered_set<int>&visited){
+        visited.insert(i);
+        for(auto temp:rooms[i]){
+            if(visited.find(temp)==visited.end())
+                fn(rooms,temp,visited);
+        }
     }
 };

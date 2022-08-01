@@ -15,8 +15,9 @@ public:
             if(temp==destination) return true;
             q.pop();
             for(auto i:mp[temp])
-                if(!visited[i]) q.push(i);
-            
+                if(!visited[i]) {q.push(i);
+                                 visited[i]=1;
+                                }
         }
         return false;
     }

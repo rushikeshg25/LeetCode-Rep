@@ -1,35 +1,27 @@
 class Solution {
-    
-    void dfs(vector<vector<int>>& graph, int x, int color, unordered_map<int, int>& colors, bool& ans) {
-        if(!ans) return;
-        if(colors.find(x) != colors.end()) {
-            if(colors[x] != color) {
-                ans = false;
-            }
-            return;
-        }
-        colors[x] = color;
-        auto& children = graph[x];
-        for(auto child : children) {
-            dfs(graph, child, color^1, colors, ans);
-        }
-        
-        return;
-    }
-    
 public:
     bool isBipartite(vector<vector<int>>& graph) {
-        int n = graph.size();
-        unordered_map<int, int> colors;
-        bool ans = true;
+        vector<int>color(graph.size(),-1);
+        for(int i=0;i<graph.size();i++){
+            if(color[i]==-1)
+               if(!fn(graph,color,i)) return false;
+        }
+        return true;
+    }
+    
+    bool fn(vector<vector<int>>graph,vector<int>&color,int temp){
+        if(color[temp]==-1) color[temp]=1;
         
-        for(int i = 0; i < n; i++) {
-            if(colors.find(i) == colors.end()) {
-                dfs(graph, i, 0, colors, ans);
-                if(!ans) return ans;
+        for(int i:graph[temp]){
+            if(color[i]==-1){
+                color[i]=1-color[temp];
+                if(!fn(graph,color,i))return false;
+            }
+            else if(color[i]==color[temp])
+            {
+                return false;
             }
         }
-        
-        return ans;
+        return true;
     }
 };

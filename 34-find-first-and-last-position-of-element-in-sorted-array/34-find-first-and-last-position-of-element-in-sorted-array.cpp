@@ -1,43 +1,10 @@
 class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
-        int n=nums.size();
-        if(n==0) return {-1,-1};
-        int last=lastocc(nums,target);
-        if(last==-1) return {-1,-1};
-        int first=firstocc(nums,target);
+        if(!binary_search(nums.begin(),nums.end(),target)) return {-1,-1};
+        int first=lower_bound(nums.begin(),nums.end(),target)-nums.begin();
+        int last=upper_bound(nums.begin(),nums.end(),target)-1-nums.begin();
+        
         return {first,last};
-    }
-    int firstocc(vector<int>& nums, int k) {
-      int n=nums.size();
-      int low=0,high=n-1;
-        int ans=-1;
-        while(low<=high){
-            int mid=(low+high)/2;
-            if(nums[mid]==k){
-                ans=mid;
-                high=mid-1;
-            }
-            else if(nums[mid]<k) low=mid+1;
-            else high=mid-1;
-            
-        }
-        return ans;
-    }
-    int lastocc(vector<int>& nums, int k) {
-        int n=nums.size();
-        int low=0,high=n-1;
-        int ans=-1;
-        while(low<=high){
-            int mid=(low+high)/2;
-            if(nums[mid]==k){
-                ans=mid;
-                low=mid+1;
-            }
-            else if(nums[mid]<k) low=mid+1;
-            else high=mid-1;
-            
-        }
-        return ans;
     }
 };

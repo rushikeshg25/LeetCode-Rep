@@ -1,12 +1,12 @@
 class Solution {
 public:
+    void fn(vector<char>&s,int l,int r){
+        if(l>r)return;
+        swap(s[l],s[r]);
+        fn(s,l+1,r-1);
+    }
     void reverseString(vector<char>& s) {
-        int n=s.size();
-	for (int i = 0; i < s.size()/2; ++i)
-	{
-		swap(s[i],s[n-1-i]);
-	}
-
-
-        }
+        fn(s,0,s.size()-1);
+        return;
+    }
 };

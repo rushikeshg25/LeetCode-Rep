@@ -1,16 +1,19 @@
 class Solution {
 public:
-    void fn(vector<string>&ans,int open,int close,int n,string subans){
-        if(open==close && open==n){
-            ans.push_back(subans);
-            return;
-        }
-        if(open<n) fn(ans,open+1,close,n,subans+'(');
-        if(close<open) fn(ans,open,close+1,n,subans+')');
-    }
     vector<string> generateParenthesis(int n) {
         vector<string>ans;
-        fn(ans,0,0,n,"");
+        string temp;
+        fn(n,ans,temp,0,0);
         return ans;
+    }
+    void fn(int total,vector<string>&ans,string temp,int open,int close){
+        if(open==total && close==total){
+            ans.push_back(temp);
+            return;
+        }
+        
+
+        if(open<total) fn(total,ans,temp+'(',open+1,close);
+        if(close<open) fn(total,ans,temp+')',open,close+1);
     }
 };

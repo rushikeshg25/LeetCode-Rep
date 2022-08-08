@@ -7,7 +7,7 @@ public:
         return ans;
     }
     void fn(int total,vector<string>&ans,string temp,int open,int close){
-        if(open==total && close==total){
+        if( close==total){
             ans.push_back(temp);
             return;
         }

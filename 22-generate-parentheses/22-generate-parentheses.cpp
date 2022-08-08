@@ -2,8 +2,8 @@ class Solution {
 public:
     vector<string> generateParenthesis(int n) {
         vector<string>ans;
-        string temp;
-        fn(n,ans,temp,0,0);
+        
+        fn(n,ans,"",0,0);
         return ans;
     }
     void fn(int total,vector<string>&ans,string temp,int open,int close){

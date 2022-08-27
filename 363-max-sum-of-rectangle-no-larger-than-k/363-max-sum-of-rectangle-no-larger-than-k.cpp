@@ -10,7 +10,6 @@ public:
                 sums[i] += matrix[i][r];
             }
             
-            // Find the max subarray no more than K 
             set<int> accuSet;
             accuSet.insert(0);
             int curSum = 0, curMax = INT_MIN;

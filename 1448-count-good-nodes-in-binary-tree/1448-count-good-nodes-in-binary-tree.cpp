@@ -11,24 +11,19 @@
  */
 class Solution {
 public:
-    int solve(TreeNode* root, int maxVal)
-{
-	if(!root) return 0;
-
-	int goodNode = 0;
-	if(root->val >= maxVal)
-	{
-		maxVal = root->val;
-		goodNode++;
-	}
-
-	return goodNode + solve(root->left, maxVal) + solve(root->right, maxVal);
-}
-    
-int goodNodes(TreeNode* root) {
+    int goodNodes(TreeNode* root) {
+        if(!root) return 0;
         
-	if(!root) return 0;
-	return solve(root, root->val);
-}
+        return fn(root,root->val);
+    }
+    int fn(TreeNode*root,int cur){
+        if(!root) return 0;
+        int ans=0;
+        if(cur<=root->val){
+            cur=root->val;
+            ans++;
+        }
+        return ans+fn(root->left,cur)+fn(root->right,cur);
+    }
     
 };
